@@ -1,2 +1,5 @@
-# replication_RCT_Morocco
-This script replicates the analysis by Crépon, Devoto, Duflo, and Pariente (American Economic Journal: Applied Economics, 2015) and finds many errors
+# replication_RCT_Morocco  
+
+*This script replicates the analysis by Crépon, Devoto, Duflo, and Pariente (American Economic Journal: Applied Economics, 2015) and finds many errors.*   
+
+**Abstract:** We replicate a flagship randomised control trial carried out in rural Morocco that showed substantial and significant impacts of microcredit on the assets, the outputs, the expenses and the profits of self-employment activities. The original results rely primarily on trimming, which is the exclusion of observation with the highest values on some variables. However, the applied trimming procedures are inconsistent between the baseline and the endline. Using identical specifications as the original paper reveals large and significant imbalances at the baseline and, at the endline, impacts on implausible outcomes, like household head gender, language or education. This calls into question the reliability of the data and the integrity of the experiment protocol. We find a series of coding, measurement and sampling errors. Correcting the identified errors lead to different results. After rectifying identified errors, we still find substantial imbalances at baseline and implausible impacts at the endline. Our re-analysis focused on the lack of internal validity of this experiment, but several of the identified issues also raise concerns about its external validity.
