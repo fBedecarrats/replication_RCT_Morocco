@@ -2055,21 +2055,11 @@ reg <- function(x, dep_vars, fullreg = FALSE, var_out = "treatment_el",
 
 reg_balance <- function(treatment, dep_vars, controls, weights = NULL, 
                          cluster, data) {
-  treatment_v <- enquo(treatment)
-  treatment_t <- as.character(treatment_v[2])
   # Creating a table to store the results
-  output <- tibble(`Dependent variable` = character(),
-                   `Obs.` = character(),
-                   `Obs. controls` = character(),
-                   `Mean controls` = character(),
-                   `SD controls` = character(),
-                   `Coeff.` = character(), 
-                   `p-value` = character())
+  output <- tibble()
   
   # Concatenating controls
   controls <- ifelse(controls != "", paste(" + ", controls, sep  = ""), "")
-  
-  
   
   for (i in seq_along(dep_vars)) {
    # print(dep_vars[i])
@@ -2081,7 +2071,7 @@ reg_balance <- function(treatment, dep_vars, controls, weights = NULL,
       regress <- lm(form, data = data)
     }
     data_controls <- data %>%
-      filter(!!treatment_v == 0) %>%
+      filter(.data[[treatment]] == 0) %>%
       select(dep_vars[i]) %>%
       unlist
     data$cluster <- cluster
@@ -2135,7 +2125,7 @@ consolidated_bl <- consolidated_bl %>%
   mutate(borrowed_oformal2 = ifelse(borrowed_oamc > 0 | borrowed_oformal > 0,
                                     1,0))
 
-bal_bl <- reg_balance(treatment = treatment,
+bal_bl <- reg_balance(treatment = "treatment",
                        dep_vars = c("members_resid", "nadults_resid",
                                     "head_age", "act_livestock",
                                     "act_business", "borrowed_alamana", 
@@ -2594,7 +2584,7 @@ vars_analyse <- c("assets_total", "output_total", "expense_total",
                   "wom_no_souk", "wom_no_bus", "wom_no_visit",
                   "wom_no_friends")
 
-balance_misc <- reg_balance(treatment = treatment,
+balance_misc <- reg_balance(treatment = "treatment",
                             dep_vars = vars_analyse,
                             controls = "factor(paire)",
                             cluster = "demi_paire",
@@ -3145,7 +3135,7 @@ vars_cred <- c("borrowed_alamana_blok", "borrowed_oformal_blok",
                "borrowed_informal_blok", 
                "borrowed_utility_blok", "borrowed_other_blok")
 
-bal_cred <- reg_balance(treatment = treatment, 
+bal_cred <- reg_balance(treatment = "treatment", 
                                    dep_vars = vars_cred,
                                    controls = "factor(paire)", 
                                    cluster = "demi_paire",
@@ -4659,7 +4649,7 @@ consolidated_misc_lp$trimobs_bl <- ifelse(is.na(consolidated_misc_lp$trimobs_bl)
 
 vars_analyse_bl <- paste0(vars_analyse, "_bl")
 
-balance_misc_lp <- reg_balance(treatment = treatment_el,
+balance_misc_lp <- reg_balance(treatment = "treatment_el",
                             dep_vars = vars_analyse_bl,
                             controls = "factor(paire_bl)",
                             cluster = "demi_paire_bl",
