@@ -2987,7 +2987,7 @@ util_tb2 <- util_tb2 %>%
          `% endline` = `\"Other\" credit at endline` / tot_othel,
          `% endline` = round(`% endline` * 100, 1)) %>%
   select(`Has electricity or water`, `\"Other\" credit at baseline`,
-         `%` =  `% baseline`, `\"Other\" credit at endline`, 
+         `% ` =  `% baseline`, `\"Other\" credit at endline`, 
          `%` =  `% endline`)
  
 util_tb2 %>%
