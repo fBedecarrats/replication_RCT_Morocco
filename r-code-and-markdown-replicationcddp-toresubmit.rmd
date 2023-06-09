@@ -2056,7 +2056,13 @@ reg <- function(x, dep_vars, fullreg = FALSE, var_out = "treatment_el",
 reg_balance <- function(treatment, dep_vars, controls, weights = NULL, 
                          cluster, data) {
   # Creating a table to store the results
-  output <- tibble()
+    output <- tibble(`Dependent variable` = character(),
+                   `Obs.` = integer(),
+                   `Obs. controls` = integer(),
+                   `Mean controls` = numeric(),
+                   `SD controls` = numeric(),
+                   `Coeff.` = character(), 
+                   `p-value` = numeric())
   
   # Concatenating controls
   controls <- ifelse(controls != "", paste(" + ", controls, sep  = ""), "")
