@@ -87,13 +87,6 @@ if (!file.exists("Data&Code_AEJApp_MicrocreditMorocco/Input/Microcredit_BL_mini_
 # The latter creates a message on latex, that a I cannot get rid of.
 # so I keep the long name and corresponding path in data import
 # file.rename(from = "Data&Code_AEJApp_MicrocreditMorocco", to = "data")
-
-# Download bibliography
-if (!file.exists("bibliography.bib")) {
-  download.file("https://www.dropbox.com/s/p73wgj0ce3vt7yx/bibliography.bib?raw=1",
-              "bibliography.bib")
-}
-
 ```
 
 # 1. Introduction
