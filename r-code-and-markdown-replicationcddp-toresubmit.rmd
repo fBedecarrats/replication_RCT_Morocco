@@ -2682,7 +2682,7 @@ colnames(var_names) <- 1:24
 var_names <- t(var_names)
 colnames(var_names) <- c("code", "label", "category", "rank")
 results <- var_names %>%
-  as.tibble() %>%
+  as_tibble() %>%
   arrange(rank) %>%
   left_join(balance_misc, by = c("code" = "Dependent variable")) %>%
   left_join(impact_misc, by = "code")  %>%
