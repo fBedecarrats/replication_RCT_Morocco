@@ -76,9 +76,13 @@ install_load("gridExtra") # Same
 
 # Downloading the data
 if (!file.exists("Data&Code_AEJApp_MicrocreditMorocco/Input/Microcredit_BL_mini_anonym.dta")) {
-  download.file("https://www.aeaweb.org/aej/app/data/0701/2013-0535_data.zip",
+  if (file.exists("data.zip")) {
+    unzip("data.zip")
+  } else { # This doesn't work anymore, AEA changed its data access protocols
+      download.file("https://www.aeaweb.org/aej/app/data/0701/2013-0535_data.zip",
               "data.zip")
   unzip("data.zip")
+  }
 } 
 # The latter creates a message on latex, that a I cannot get rid of.
 # so I keep the long name and corresponding path in data import
