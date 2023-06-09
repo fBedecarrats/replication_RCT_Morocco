@@ -2675,7 +2675,8 @@ var_names <- tibble(c("cm_darija_tot", "Darija",
                     c("inv_total","Of which: Investment", 
                       "Outcomes on self-employment activities", 0),
                     c("profit_total","Profit", 
-                      "Outcomes on self-employment activities", 0))
+                      "Outcomes on self-employment activities", 0),
+                    .name_repair = "minimal")
 
 colnames(var_names) <- 1:24
 var_names <- t(var_names)
